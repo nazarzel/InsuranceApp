@@ -4,14 +4,16 @@ using InsuranceApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InsuranceApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200521145918_addedFiles")]
+    partial class addedFiles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace InsuranceApp.Data.Migrations
                     b.Property<int?>("ModelId")
                         .HasColumnType("int");
 
-                    b.Property<string>("OwnerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -71,8 +70,6 @@ namespace InsuranceApp.Data.Migrations
                     b.HasIndex("CarTypeId");
 
                     b.HasIndex("ModelId");
-
-                    b.HasIndex("OwnerId");
 
                     b.ToTable("Cars");
                 });
@@ -156,17 +153,11 @@ namespace InsuranceApp.Data.Migrations
                     b.Property<int?>("PayStatusId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("PdfSent")
-                        .HasColumnType("bit");
-
                     b.Property<string>("PdfUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("ReminderSent")
-                        .HasColumnType("bit");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -429,10 +420,6 @@ namespace InsuranceApp.Data.Migrations
                     b.HasOne("InsuranceApp.Entities.Model", "Model")
                         .WithMany()
                         .HasForeignKey("ModelId");
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("InsuranceApp.Entities.Model", b =>

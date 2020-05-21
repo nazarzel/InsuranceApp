@@ -18,6 +18,8 @@ namespace InsuranceApp.Entities
         public DateTime DayStart { get; set; }
         public PayStatus PayStatus { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        
+        public string PdfUrl { get; set; }
+        public bool PdfSent { get; set; }
+        public bool ReminderSent { get; set; }
     }
 }
