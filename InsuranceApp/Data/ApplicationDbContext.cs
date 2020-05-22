@@ -23,6 +23,7 @@ namespace InsuranceApp.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<PayStatus> PayStatuses { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<PaymentType> PaymentTypes { get; set; }
 
     }
 }
