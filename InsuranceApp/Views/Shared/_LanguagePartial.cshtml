@@ -1,0 +1,63 @@
+﻿@*@using Microsoft.AspNetCore.Builder
+    @using Microsoft.AspNetCore.Localization
+    @using Microsoft.AspNetCore.Mvc.Localization
+    @using Microsoft.Extensions.Options
+
+    @inject IViewLocalizer Localizer
+    @inject IOptions<RequestLocalizationOptions> ReqLocOptions
+
+    @{
+        var requestCulture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+        var cultureItems = ReqLocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    }
+    <li class="nav-item">
+        <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path"
+              method="post" class="form-horizontal" role="form">
+            <a href="?culture=ru-RU" asp-for="@requestCulture.RequestCulture.UICulture.Name"><span class="flag-icon flag-icon-ru"> </span></a>
+            <a href="?culture=uk-UA" asp-for="@requestCulture.RequestCulture.UICulture.Name"><span class="flag-icon flag-icon-ua"> </span></a>
+            <a href="?culture=pl-PL" asp-for="@requestCulture.RequestCulture.UICulture.Name"><span class="flag-icon flag-icon-in"> </span></a>
+        </form>
+    </li>*@
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+    @{
+        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+        var cultureItems = new List<SelectListItem>();
+        //LocOptions.Value.SupportedUICultures
+        //.Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        //.ToList();
+        cultureItems.Add(new SelectListItem { Value = "uk-UA", Text = "Українська"});
+        cultureItems.Add(new SelectListItem { Value = "hi-In", Text = "हिन्दी" });
+        cultureItems.Add(new SelectListItem { Value = "ru-RU", Text = "Русский" });
+        var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    }
+
+    <div title="@Localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
+        <form id="selectLanguage" asp-controller="Language"
+              asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+              method="post" class="form-horizontal" role="form">
+            <label asp-for="@requestCulture.RequestCulture.UICulture.Name">@Localizer["Language"]</label> 
+            <select name="culture"
+                onchange="this.form.submit();"
+                asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+            </select>
+        </form>
+    </div>
+    @*<li class="nav-item">
+        <form id="selectLanguage" asp-controller="Language" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+              method="post" class="form-horizontal" role="form">
+            <a asp-item="cultureItems[0]" asp-for="@requestCulture.RequestCulture.UICulture.Name" name="culture" onclick="this.form.submit();"><span  class="flag-icon flag-icon-ru"> </span></a>
+            <a asp-item="cultureItems[1]" asp-for="@requestCulture.RequestCulture.UICulture.Name" name="culture" onclick="this.form.submit();"><span  class="flag-icon flag-icon-ua"> </span></a>
+            <a asp-item="cultureItems[2]" asp-for="@requestCulture.RequestCulture.UICulture.Name" name="culture" onclick="this.form.submit();"><span  class="flag-icon flag-icon-in"> </span></a>
+        </form>
+    </li>*@
