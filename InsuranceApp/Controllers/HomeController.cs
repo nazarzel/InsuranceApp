@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using InsuranceApp.Models;
+using Microsoft.Extensions.Localization;
 
 namespace InsuranceApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IStringLocalizer<HomeController> stringLocalizer;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            IStringLocalizer<HomeController> stringLocalizer)
         {
             _logger = logger;
+            this.stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
         {
+            ViewBag.PageTitle = stringLocalizer["Language"];
+            ViewData["Message"] = stringLocalizer["Language"];
             return View();
         }
 

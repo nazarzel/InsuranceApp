@@ -1,7 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
     ViewData["Title"] = "Home Page";
 }
-
+    <h3>@ViewData["Message"]</h3>
+    <h4>@Localizer["Language"]</h4>
 <link rel="stylesheet" href="~/css/Carousel.css" />
 <link rel="stylesheet" href="~/css/Counter.css" />
 <script type="text/javascript" src="~/js/Counter.js"></script>
@@ -195,85 +198,84 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="row mt-3">
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    </div>
+    <div class="row mt-3">
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
 
-                    <!--First slide-->
-                    <div class="carousel-item active">
+                <!--First slide-->
+                <div class="carousel-item active">
 
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                     src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                    <button type="button" class="btn btn-primary">Order</button>
-                                </div>
+                    <div class="col-md-3" style="float:left">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <button type="button" class="btn btn-primary">Order</button>
                             </div>
                         </div>
-
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                     src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                    <button type="button" class="btn btn-primary">Order</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                     src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                    <button type="button" class="btn btn-primary">Order</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                     src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                    <button type="button" class="btn btn-primary">Order</button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                    <!--/.First slide-->
-                    <!--Second slide-->
+
+                    <div class="col-md-3" style="float:left">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <button type="button" class="btn btn-primary">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" style="float:left">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <button type="button" class="btn btn-primary">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" style="float:left">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <button type="button" class="btn btn-primary">Order</button>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-                <!--/.Slides-->
+                <!--/.First slide-->
+                <!--Second slide-->
 
             </div>
+            <!--/.Slides-->
+
         </div>
     </div>
 </div>
